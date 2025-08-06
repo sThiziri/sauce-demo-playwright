@@ -39,6 +39,7 @@ test('click menu About @tc-001-01 @menu @About', async ({ page }) => {
   const menuPage:MenuPage = new MenuPage(page);
   await menuPage.clickMenu();
   await menuPage.clickMenuAbout();
+  expect(page.url()).toBe('https://saucelabs.com/'); 
 });
 
 test('click menu Logout @tc-001-01 @menu @Logout', async ({ page }) => {
@@ -52,6 +53,7 @@ test('click menu Logout @tc-001-01 @menu @Logout', async ({ page }) => {
   const menuPage:MenuPage = new MenuPage(page);
   await menuPage.clickMenu();
   await menuPage.clickMenuLogout();
+  expect(page.url()).toBe('https://www.saucedemo.com/'); 
 });
 
 test('click menu Reset App State @tc-001-01 @menu @Reset', async ({ page }) => {

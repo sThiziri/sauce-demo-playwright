@@ -16,27 +16,22 @@ class MenuPage{
     }
 
     async clickMenu(){
-        await expect(this.elements.menubar()).toBeVisible({ timeout: 5000 });
         await this.elements.menubar().click();
     }
 
     async clickMenuAll(){
-        await expect(this.elements.menuAll()).toBeVisible({ timeout: 5000 });
         await this.elements.menuAll().click();
     }
 
     async clickMenuAbout(){
-        await expect(this.elements.menuAbout()).toBeVisible({ timeout: 5000 });
         await this.elements.menuAbout().click();
     }
 
     async clickMenuLogout(){
-        await expect(this.elements.menuLogout()).toBeVisible({ timeout: 5000 });
         await this.elements.menuLogout().click();
     }
 
     async clickMenuReset(){
-        await expect(this.elements.menuReset()).toBeVisible({ timeout: 5000 });
         await this.elements.menuReset().click();
     }
     
