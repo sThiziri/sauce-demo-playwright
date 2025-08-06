@@ -23,7 +23,7 @@ test('@tc-002 @produit @regression - Vérification de la page Inventory et redir
   const boutonPanierVisible = await inventoryPage.estBoutonPanierVisible();
   expect(boutonPanierVisible).toBe(true);
 
-  // Clic sur le bouton panier et vérifier la redirection
+  // pour arezki :  cliquer  sur le bouton panier et vérifier la redirection
   await inventoryPage.cliquerSurPanier();
   await expect(page).toHaveURL('https://www.saucedemo.com/cart.html');
 });
