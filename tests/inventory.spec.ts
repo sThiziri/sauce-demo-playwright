@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
 import InventoryPage from '../pages/InventoryPage';
 
-test('@tc-002 @produit @regression - Affichage des produits sur la page Inventory', async ({ page }) => {
- 
+test('@tc-002 @produit @regression - Vérification de la page Inventory et redirection panier', async ({ page }) => {
+
   await page.goto('https://www.saucedemo.com/');
   const loginPage = new LoginPage(page);
   await loginPage.saisirUsername('standard_user');
@@ -13,11 +13,17 @@ test('@tc-002 @produit @regression - Affichage des produits sur la page Inventor
   
   const inventoryPage = new InventoryPage(page);
 
-  
-  const visible = await inventoryPage.estPageProduitVisible();
-  expect(visible).toBe(true);
+  const pageVisible = await inventoryPage.estPageProduitVisible();
+  expect(pageVisible).toBe(true);
+
+  const nbProduits = await inventoryPage.getNombreDeProduits();
+  expect(nbProduits).toBeGreaterThan(0);
 
   
-  const nombreDeProduits = await inventoryPage.getNombreDeProduits();
-  expect(nombreDeProduits).toBeGreaterThan(0);
+  const boutonPanierVisible = await inventoryPage.estBoutonPanierVisible();
+  expect(boutonPanierVisible).toBe(true);
+
+  // Clic sur le bouton panier et vérifier la redirection
+  await inventoryPage.cliquerSurPanier();
+  await expect(page).toHaveURL('https://www.saucedemo.com/cart.html');
 });
